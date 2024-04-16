@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../src/assets/fonts/Poppins-VariableFont_wght.otf");
+}
+
+:root {
+  @apply font-body;
+}
