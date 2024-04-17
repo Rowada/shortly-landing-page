@@ -37,7 +37,9 @@ export const Nav = () => {
               <ul className="ml-10 flex items-baseline space-x-4">
                 {MENU_ITEMS.map((items) => (
                   <li key={items.id}>
-                    <a href="#">{items.item}</a>
+                    <a className="font-semibold text-accent" href="#">
+                      {items.item}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -45,8 +47,10 @@ export const Nav = () => {
           </div>
           <div className="hidden md:block">
             <div className="flex items-baseline space-x-4">
-              <button>Login</button>
-              <button>Sign Up</button>
+              <button className="font-semibold text-accent">Login</button>
+              <button className="rounded-full bg-primary px-4 py-1 font-semibold text-white">
+                Sign Up
+              </button>
             </div>
           </div>
 
