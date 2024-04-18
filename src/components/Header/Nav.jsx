@@ -62,8 +62,8 @@ export const Nav = () => {
         </div>
 
         {isOpen && (
-          <div className="md:hidden">
-            <div className="mx-auto flex flex-col items-center justify-around space-y-4 rounded-lg bg-background py-4">
+          <div className=" md:hidden">
+            <div className=" mx-auto flex flex-col items-center justify-around space-y-4 rounded-lg bg-background py-4">
               <ul className="flex flex-col items-center space-y-4">
                 {MENU_ITEMS.map((items) => (
                   <li key={items.id}>
