@@ -8,14 +8,20 @@ export const Hero = () => {
     <Section>
       <section>
         <div className="mx-auto grid gap-6 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
-          <div className="lg:order-last lg:col-span-6">
-            <img src={banner} alt="illustration" />
+          <div className="mx-auto place-self-end lg:order-last lg:col-span-6">
+            <img
+              className="w-96 md:w-[500px] lg:w-full"
+              src={banner}
+              alt="illustration"
+            />
           </div>
-          <div className="place-self-center text-center md:text-start lg:order-first lg:col-span-6">
-            <h1 className="mb-4 max-w-xl text-4xl font-bold leading-none  md:text-5xl xl:text-7xl ">
-              More than just shorter links
+          <div className="place-self-center text-center md:text-start lg:order-first lg:col-span-6 lg:justify-self-start">
+            <h1 className="mb-1 text-4xl font-bold text-text sm:max-w-md md:text-5xl xl:max-w-xl xl:text-7xl ">
+              More than just
+              <br />
+              shorter links
             </h1>
-            <p className="mb-6 max-w-md font-light md:text-base lg:mb-8 lg:text-lg">
+            <p className="max-w-md font-medium text-accent md:text-base lg:mb-8 lg:text-lg">
               Build your brand's recognition and get detailed insights on how
               your links are performing.
             </p>
