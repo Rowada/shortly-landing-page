@@ -17,6 +17,10 @@ export default {
         foreground: "hsl(260, 8%, 14%)",
         features: "hsl(232, 26%, 94%)",
       },
+
+      backgroundImage: {
+        banner: "url('/src/assets/images/bg-boost-desktop.svg)",
+      },
     },
   },
   plugins: [],

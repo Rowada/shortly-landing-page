@@ -7,7 +7,7 @@ import { PenTool } from "lucide-react";
 
 export const Features = () => {
   return (
-    <div className="w-full bg-features">
+    <div className="w-full bg-features py-20">
       <Section>
         <div className="flex flex-col items-center justify-center">
           <h2 className="py-3 text-2xl font-bold text-text md:text-3xl">
