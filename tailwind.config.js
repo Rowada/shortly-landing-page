@@ -15,6 +15,7 @@ export default {
         accent: "hsl(257, 7%, 63%)",
         text: "hsl(255, 11%, 22%)",
         foreground: "hsl(260, 8%, 14%)",
+        features: "hsl(232, 26%, 94%)",
       },
     },
   },
