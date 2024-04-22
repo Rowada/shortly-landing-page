@@ -1,5 +1,9 @@
 import React from "react";
 import { Section } from "../Section/Section";
+import { Card } from "./Card";
+import { LineChart } from "lucide-react";
+import { CircleGauge } from "lucide-react";
+import { PenTool } from "lucide-react";
 
 export const Features = () => {
   return (
@@ -13,6 +17,28 @@ export const Features = () => {
             Track how your links are performing across the web with our advanced
             statistics dashboard.
           </p>
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-10 md:gap-8">
+          <Card
+            icon={<LineChart size={28} />}
+            title={"Brand Recognition"}
+            content={`Boost your brand recognition with each click. 
+              Generic links don't mean a thing. 
+              Branded links help instil confidence in your content.`}
+          />
+          <Card
+            icon={<CircleGauge size={28} />}
+            title={"Detailed Records"}
+            content={`Gain insights into who is clicking your links. 
+            Knowing when and where people engage with your content helps inform better decisions.`}
+          />
+          <Card
+            icon={<PenTool size={28} />}
+            title={"Fully Customizable"}
+            content={`Improve brand awareness and content discoverability 
+            through customizable links, supercharging audience engagement.`}
+          />
         </div>
       </Section>
     </div>
