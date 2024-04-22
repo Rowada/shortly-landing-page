@@ -25,7 +25,7 @@ export const Hero = () => {
               Build your brand's recognition and get detailed insights on how
               your links are performing.
             </p>
-            <button className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-center text-base font-semibold text-white focus:ring-4">
+            <button className="mt-4 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-center text-base font-semibold text-white focus:ring-4 lg:mt-0">
               Get started
             </button>
           </div>
