@@ -19,26 +19,32 @@ export const Features = () => {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-10 md:gap-8">
-          <Card
-            icon={<LineChart size={28} />}
-            title={"Brand Recognition"}
-            content={`Boost your brand recognition with each click. 
+        <div className="my-10 flex flex-wrap items-center justify-center gap-10 md:gap-8">
+          <div className="translate-y-0">
+            <Card
+              icon={<LineChart size={28} />}
+              title={"Brand Recognition"}
+              content={`Boost your brand recognition with each click. 
               Generic links don't mean a thing. 
               Branded links help instil confidence in your content.`}
-          />
-          <Card
-            icon={<CircleGauge size={28} />}
-            title={"Detailed Records"}
-            content={`Gain insights into who is clicking your links. 
+            />
+          </div>
+          <div className="translate-y-8">
+            <Card
+              icon={<CircleGauge size={28} />}
+              title={"Detailed Records"}
+              content={`Gain insights into who is clicking your links. 
             Knowing when and where people engage with your content helps inform better decisions.`}
-          />
-          <Card
-            icon={<PenTool size={28} />}
-            title={"Fully Customizable"}
-            content={`Improve brand awareness and content discoverability 
+            />
+          </div>
+          <div className="translate-y-16">
+            <Card
+              icon={<PenTool size={28} />}
+              title={"Fully Customizable"}
+              content={`Improve brand awareness and content discoverability 
             through customizable links, supercharging audience engagement.`}
-          />
+            />
+          </div>
         </div>
       </Section>
     </div>

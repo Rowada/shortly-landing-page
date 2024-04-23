@@ -15,7 +15,7 @@ export const Footer = () => {
 
           <div className="flex w-full flex-col items-center justify-center gap-6 text-center md:flex-row md:items-start md:gap-20 md:text-justify">
             <div>
-              <h4 className="mb-3 font-semibold text-white ">Features</h4>
+              <h4 className="mb-3 font-semibold text-white">Features</h4>
               <ul className="leading-relaxed text-accent">
                 <li>Link Shortening</li>
                 <li>Branded Links</li>
