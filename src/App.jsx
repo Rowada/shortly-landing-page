@@ -3,6 +3,7 @@ import { Nav } from "./components/Header/Nav";
 import { Hero } from "./components/Header/Hero";
 import { Features } from "./components/Features/Features";
 import { Banner } from "./components/Banners/Banner";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <Features />
       <Banner />
+      <Footer />
     </>
   );
 }
