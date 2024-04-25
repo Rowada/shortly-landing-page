@@ -3,6 +3,7 @@ import React from "react";
 import { Section } from "../Section/Section";
 
 import banner from "../../assets/images/illustration-working.svg";
+import { CleanForm } from "../Form/CleanForm";
 export const Hero = () => {
   return (
     <Section>
@@ -31,6 +32,10 @@ export const Hero = () => {
           </div>
         </div>
       </section>
+
+      <div className="translate-y-[70px]">
+        <CleanForm />
+      </div>
     </Section>
   );
 };
