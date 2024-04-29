@@ -7,7 +7,7 @@ const useCleanURI = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const apiKey = import.meta.env.API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   const shortenUrl = async (longUrl) => {
     setLoading(true);
