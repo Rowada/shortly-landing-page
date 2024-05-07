@@ -7,12 +7,19 @@ export const CleanForm = () => {
   const [longUrl, setLongUrl] = useState("");
   const { shortenedUrl, loading, error, shortenUrl } = useCleanURI();
 
-  const handleShortenUrl = (e) => {
+  const handleShortenUrl = async (e) => {
     e.preventDefault();
 
-    shortenUrl(longUrl);
+    await shortenUrl(longUrl);
     setLongUrl("");
   };
+
+  console.log(
+    "Valeurs à afficher dans le composant CleanForm :",
+    longUrl,
+    shortenedUrl
+  ); // Log pour vérifier les valeurs de longUrl et shortenedUrl
+
   return (
     <>
       <div className="flex h-32 w-full items-center justify-center rounded-md bg-background bg-[url('src/assets/images/bg-shorten-desktop.svg')] bg-cover bg-center bg-no-repeat text-center ">
@@ -42,9 +49,7 @@ export const CleanForm = () => {
         {loading && <p>Chargement en cours...</p>}
         {error && <p>Erreur : {error}</p>}
         {shortenedUrl && (
-          <p>
-            {longUrl} : {shortenedUrl}
-          </p>
+          <p>{longUrl ? `${longUrl} : ${shortenedUrl}` : shortenedUrl}</p>
         )}
       </div>
     </>
