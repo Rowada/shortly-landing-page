@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const useCleanURI = () => {
   const [shortenedUrl, setShortenedUrl] = useState("");
+  const [longUrl, setLongUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -25,8 +26,11 @@ const useCleanURI = () => {
 
       const data = await response.json();
 
+      console.log("Données de réponse de l'API :", data);
+
       if (response.ok) {
-        setShortenedUrl(data.shortenUrl);
+        setShortenedUrl(data.shortUrl);
+        setLongUrl(longUrl); // Mettre à jour longUrl avec la valeur actuelle
       } else {
         setError(
           data.message ||
@@ -40,6 +44,12 @@ const useCleanURI = () => {
     }
   };
 
-  return { shortenedUrl, loading, error, shortenUrl };
+  // console.log(
+  //   "Valeur de shortenedUrl dans le hook useCleanURI :",
+  //   shortenedUrl
+  // );
+  // console.log("Valeur de longUrl dans le hook useCleanURI :", longUrl);
+
+  return { shortenedUrl, longUrl, loading, error, shortenUrl };
 };
 export default useCleanURI;
