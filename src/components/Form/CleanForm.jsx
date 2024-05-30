@@ -2,6 +2,7 @@ import React from "react";
 
 import { useState } from "react";
 import useCleanURI from "../../hooks/useCleanURI";
+import { UrlCard } from "./UrlCard";
 
 export const CleanForm = () => {
   const [longUrl, setLongUrl] = useState("");
@@ -13,12 +14,6 @@ export const CleanForm = () => {
     await shortenUrl(longUrl);
     setLongUrl("");
   };
-
-  console.log(
-    "Valeurs à afficher dans le composant CleanForm :",
-    longUrl,
-    shortenedUrl
-  ); // Log pour vérifier les valeurs de longUrl et shortenedUrl
 
   return (
     <>
@@ -37,7 +32,6 @@ export const CleanForm = () => {
 
           <button
             type="submit"
-            // onClick={handleShortenUrl}
             className="w-full rounded-md bg-primary p-3 font-semibold text-white md:w-1/5"
           >
             Shorten it!
@@ -45,13 +39,18 @@ export const CleanForm = () => {
         </form>
       </div>
 
-      <div>
+      {/* <div>
         {loading && <p>Chargement en cours...</p>}
         {error && <p>Erreur : {error}</p>}
         {shortenedUrl && (
           <p>{longUrl ? `${longUrl} : ${shortenedUrl}` : shortenedUrl}</p>
         )}
+      </div> */}
+      <div>
+        {loading && <p>Chargement en cours...</p>}
+        {error && <p>Erreur : {error}</p>}
       </div>
+      <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
     </>
   );
 };
