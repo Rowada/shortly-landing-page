@@ -1,17 +1,38 @@
 import React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useCleanURI from "../../hooks/useCleanURI";
 import { UrlCard } from "./UrlCard";
+import {
+  saveToSessionStorage,
+  getFromSessionStorage,
+} from "../../utils/sessionStorage";
 
 export const CleanForm = () => {
   const [longUrl, setLongUrl] = useState("");
+  const [storedData, setStoredData] = useState({
+    longUrl: "",
+    shortenedUrl: "",
+  });
   const { shortenedUrl, loading, error, shortenUrl } = useCleanURI();
+
+  useEffect(() => {
+    const data = getFromSessionStorage("shortenedUrl");
+    if (data) {
+      setStoredData(data);
+    }
+  }, []);
 
   const handleShortenUrl = async (e) => {
     e.preventDefault();
 
     await shortenUrl(longUrl);
+
+    if (shortenedUrl) {
+      saveToSessionStorage("shortenedUrl", { longUrl, shortenedUrl });
+      setStoredData({ longUrl, shortenedUrl });
+    }
+
     setLongUrl("");
   };
 
@@ -50,6 +71,23 @@ export const CleanForm = () => {
         {loading && <p>Chargement en cours...</p>}
         {error && <p>Erreur : {error}</p>}
       </div>
+
+      {storedData.shortenedUrl && (
+        <UrlCard
+          longUrl={storedData.longUrl}
+          shortUrl={storedData.shortenedUrl}
+        />
+      )}
+
+      {/* 
+      
+      @Tester avec la valeur --destination-- pour avoir le longUrl 
+      
+
+      @Création du composant UrlCard a chaque submit du formulaire.
+      
+      
+      */}
       <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
     </>
   );

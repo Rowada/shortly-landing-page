@@ -3,7 +3,7 @@ import React from "react";
 export const UrlCard = ({ longUrl, shortUrl }) => {
   return (
     <div className="mt-3 flex items-center justify-between rounded-md bg-white p-2">
-      <p>My URL {longUrl}</p>
+      <p>{longUrl}</p>
 
       <div className="flex items-center justify-center gap-3">
         <span>{shortUrl}</span>
