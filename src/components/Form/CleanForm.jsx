@@ -17,7 +17,7 @@ export const CleanForm = () => {
 
   return (
     <>
-      <div className="flex h-32 w-full items-center justify-center rounded-md bg-background bg-[url('src/assets/images/bg-shorten-desktop.svg')] bg-cover bg-center bg-no-repeat text-center ">
+      <div className=" flex h-32 w-full items-center justify-center rounded-md bg-background bg-[url('src/assets/images/bg-shorten-desktop.svg')] bg-cover bg-center bg-no-repeat text-center ">
         <form
           onSubmit={handleShortenUrl}
           className="m-auto flex size-full flex-col items-center justify-center gap-y-3 px-3 md:flex-row md:gap-x-3 md:px-10"
@@ -43,7 +43,9 @@ export const CleanForm = () => {
 
       <div>{loading && <p>Chargement en cours...</p>}</div>
 
-      <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
+      <div className="absolute inset-x-0 top-32">
+        <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
+      </div>
     </>
   );
 };
