@@ -1,39 +1,18 @@
 import React from "react";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useCleanURI from "../../hooks/useCleanURI";
 import { UrlCard } from "./UrlCard";
-import {
-  saveToSessionStorage,
-  getFromSessionStorage,
-} from "../../utils/sessionStorage";
 
 export const CleanForm = () => {
-  const [longUrl, setLongUrl] = useState("");
-  const [storedData, setStoredData] = useState({
-    longUrl: "",
-    shortenedUrl: "",
-  });
-  const { shortenedUrl, loading, error, shortenUrl } = useCleanURI();
+  const [localLongUrl, setLocalLongUrl] = useState("");
 
-  useEffect(() => {
-    const data = getFromSessionStorage("shortenedUrl");
-    if (data) {
-      setStoredData(data);
-    }
-  }, []);
+  const { shortenedUrl, longUrl, loading, error, shortenUrl } = useCleanURI();
 
   const handleShortenUrl = async (e) => {
     e.preventDefault();
-
-    await shortenUrl(longUrl);
-
-    if (shortenedUrl) {
-      saveToSessionStorage("shortenedUrl", { longUrl, shortenedUrl });
-      setStoredData({ longUrl, shortenedUrl });
-    }
-
-    setLongUrl("");
+    await shortenUrl(localLongUrl);
+    setLocalLongUrl("");
   };
 
   return (
@@ -47,8 +26,8 @@ export const CleanForm = () => {
             className="w-full rounded-md p-3 md:w-4/5"
             type="text"
             placeholder="Shorten a link here..."
-            value={longUrl}
-            onChange={(e) => setLongUrl(e.target.value)}
+            value={localLongUrl}
+            onChange={(e) => setLocalLongUrl(e.target.value)}
           />
 
           <button
@@ -58,36 +37,12 @@ export const CleanForm = () => {
             Shorten it!
           </button>
         </form>
-      </div>
 
-      {/* <div>
-        {loading && <p>Chargement en cours...</p>}
-        {error && <p>Erreur : {error}</p>}
-        {shortenedUrl && (
-          <p>{longUrl ? `${longUrl} : ${shortenedUrl}` : shortenedUrl}</p>
-        )}
-      </div> */}
-      <div>
-        {loading && <p>Chargement en cours...</p>}
         {error && <p>Erreur : {error}</p>}
       </div>
 
-      {storedData.shortenedUrl && (
-        <UrlCard
-          longUrl={storedData.longUrl}
-          shortUrl={storedData.shortenedUrl}
-        />
-      )}
+      <div>{loading && <p>Chargement en cours...</p>}</div>
 
-      {/* 
-      
-      @Tester avec la valeur --destination-- pour avoir le longUrl 
-      
-
-      @Création du composant UrlCard a chaque submit du formulaire.
-      
-      
-      */}
       <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
     </>
   );

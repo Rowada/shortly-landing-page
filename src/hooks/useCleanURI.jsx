@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useCleanURI = () => {
   const [shortenedUrl, setShortenedUrl] = useState("");
@@ -9,6 +9,15 @@ const useCleanURI = () => {
   const [error, setError] = useState(null);
 
   const apiKey = import.meta.env.VITE_API_KEY;
+
+  useEffect(() => {
+    const savedShortenedUrl = sessionStorage.getItem("shortenedUrl");
+    const savedLongUrl = sessionStorage.getItem("longUrl");
+    if (savedShortenedUrl && savedLongUrl) {
+      setShortenedUrl(savedShortenedUrl);
+      setLongUrl(savedLongUrl);
+    }
+  }, []);
 
   const shortenUrl = async (longUrl) => {
     setLoading(true);
@@ -26,11 +35,12 @@ const useCleanURI = () => {
 
       const data = await response.json();
 
-      console.log("Données de réponse de l'API :", data);
-
       if (response.ok) {
         setShortenedUrl(data.shortUrl);
         setLongUrl(longUrl); // Mettre à jour longUrl avec la valeur actuelle
+
+        sessionStorage.setItem("shortenedUrl", data.shortUrl);
+        sessionStorage.setItem("longUrl", longUrl);
       } else {
         setError(
           data.message ||
@@ -43,12 +53,6 @@ const useCleanURI = () => {
       setLoading(false);
     }
   };
-
-  // console.log(
-  //   "Valeur de shortenedUrl dans le hook useCleanURI :",
-  //   shortenedUrl
-  // );
-  // console.log("Valeur de longUrl dans le hook useCleanURI :", longUrl);
 
   return { shortenedUrl, longUrl, loading, error, shortenUrl };
 };
