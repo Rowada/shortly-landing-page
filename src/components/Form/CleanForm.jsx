@@ -43,7 +43,7 @@ export const CleanForm = () => {
 
       <div>{loading && <p>Chargement en cours...</p>}</div>
 
-      <div className="absolute inset-x-0 top-32">
+      <div className="">
         <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
       </div>
     </>
