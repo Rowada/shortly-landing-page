@@ -11,11 +11,18 @@ const useCleanURI = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    const savedShortenedUrl = sessionStorage.getItem("shortenedUrl");
-    const savedLongUrl = sessionStorage.getItem("longUrl");
-    if (savedShortenedUrl && savedLongUrl) {
-      setShortenedUrl(savedShortenedUrl);
-      setLongUrl(savedLongUrl);
+    // const savedShortenedUrl = sessionStorage.getItem("shortenedUrl");
+    // const savedLongUrl = sessionStorage.getItem("longUrl");
+    // if (savedShortenedUrl && savedLongUrl) {
+    //   setShortenedUrl(savedShortenedUrl);
+    //   setLongUrl(savedLongUrl);
+    // }
+
+    const url = JSON.parse(sessionStorage.getItem("url"));
+
+    if (url) {
+      setShortenedUrl(url.shortUrl);
+      setLongUrl(url.longUrl);
     }
   }, []);
 
@@ -39,8 +46,10 @@ const useCleanURI = () => {
         setShortenedUrl(data.shortUrl);
         setLongUrl(longUrl); // Mettre à jour longUrl avec la valeur actuelle
 
-        sessionStorage.setItem("shortenedUrl", data.shortUrl);
-        sessionStorage.setItem("longUrl", longUrl);
+        // sessionStorage.setItem("shortenedUrl", data.shortUrl);
+        // sessionStorage.setItem("longUrl", longUrl);
+
+        sessionStorage.setItem("url", JSON.stringify(longUrl, data.shortUrl));
       } else {
         setError(
           data.message ||

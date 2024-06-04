@@ -12,6 +12,7 @@ export const CleanForm = () => {
   const handleShortenUrl = async (e) => {
     e.preventDefault();
     await shortenUrl(localLongUrl);
+
     setLocalLongUrl("");
   };
 
