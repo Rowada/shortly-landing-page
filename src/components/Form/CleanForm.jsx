@@ -35,7 +35,7 @@ export const CleanForm = () => {
 
   return (
     <>
-      <div className=" flex h-32 w-full items-center justify-center rounded-md bg-background bg-[url('src/assets/images/bg-shorten-desktop.svg')] bg-cover bg-center bg-no-repeat text-center ">
+      <div className="flex h-32 w-full items-center justify-center rounded-md bg-background bg-[url('src/assets/images/bg-shorten-desktop.svg')] bg-cover bg-center bg-no-repeat text-center ">
         <form
           onSubmit={handleShortenUrl}
           className="m-auto flex size-full flex-col items-center justify-center gap-y-3 px-3 md:flex-row md:gap-x-3 md:px-10"
@@ -55,11 +55,20 @@ export const CleanForm = () => {
             Shorten it!
           </button>
         </form>
-
-        {error && <p>Erreur : {error}</p>}
       </div>
 
-      <div>{loading && <p>Chargement en cours...</p>}</div>
+      <div
+        className="my-3
+      "
+      >
+        {error && <p className="rounded-md bg-secondary p-3">{error}</p>}
+
+        {loading && (
+          <p className="rounded-md bg-primary p-3 font-semibold text-white">
+            Loading...
+          </p>
+        )}
+      </div>
 
       <div>
         {urlList.map((url, index) => (
