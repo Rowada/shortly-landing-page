@@ -3,7 +3,8 @@ import React from "react";
 import { Section } from "../Section/Section";
 
 import banner from "../../assets/images/illustration-working.svg";
-import { CleanForm } from "../Form/CleanForm";
+// import { CleanForm } from "../Form/CleanForm";
+// import { UrlList } from "../Form/UrlList";
 
 export const Hero = () => {
   return (
@@ -34,9 +35,12 @@ export const Hero = () => {
         </div>
       </section>
 
-      <div className="translate-y-[70px]">
-        <CleanForm />
-      </div>
+      {/* <div className="relative -bottom-60 md:-bottom-40">
+        <div>
+          <CleanForm />
+        </div>
+        <UrlList />
+      </div> */}
     </Section>
   );
 };

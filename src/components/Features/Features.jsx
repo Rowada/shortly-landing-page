@@ -4,11 +4,18 @@ import { Card } from "./Card";
 import { LineChart } from "lucide-react";
 import { CircleGauge } from "lucide-react";
 import { PenTool } from "lucide-react";
+import { UrlList } from "../Form/UrlList";
+import { CleanForm } from "../Form/CleanForm";
 
 export const Features = () => {
   return (
-    <div className="w-full bg-features py-40">
+    <div className="mt-20 w-full bg-features py-40">
       <Section>
+        <div className="relative -top-60 -mb-28">
+          <CleanForm />
+          <UrlList />
+        </div>
+
         <div className="flex flex-col items-center justify-center">
           <h2 className="py-3 text-2xl font-bold text-text md:text-3xl">
             Advanced Statistics
