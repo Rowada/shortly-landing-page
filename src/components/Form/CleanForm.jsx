@@ -1,13 +1,30 @@
+// @ts-nocheck
 import React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useCleanURI from "../../hooks/useCleanURI";
 import { UrlCard } from "./UrlCard";
 
 export const CleanForm = () => {
   const [localLongUrl, setLocalLongUrl] = useState("");
-
+  const [urlList, setUrlList] = useState([]);
   const { shortenedUrl, longUrl, loading, error, shortenUrl } = useCleanURI();
+
+  useEffect(() => {
+    const savedUrls = JSON.parse(sessionStorage.getItem("urlList"));
+    if (savedUrls) {
+      setUrlList(savedUrls);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (shortenedUrl) {
+      const newUrl = { longUrl: longUrl, shortUrl: shortenedUrl };
+      const updatedUrlList = [...urlList, newUrl];
+      setUrlList(updatedUrlList);
+      sessionStorage.setItem("urlList", JSON.stringify(updatedUrlList));
+    }
+  }, [shortenedUrl]);
 
   const handleShortenUrl = async (e) => {
     e.preventDefault();
@@ -45,7 +62,9 @@ export const CleanForm = () => {
       <div>{loading && <p>Chargement en cours...</p>}</div>
 
       <div>
-        <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
+        {urlList.map((url, index) => (
+          <UrlCard key={index} longUrl={url.longUrl} shortUrl={url.shortUrl} />
+        ))}
       </div>
     </>
   );
