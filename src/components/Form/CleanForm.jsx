@@ -44,7 +44,7 @@ export const CleanForm = () => {
 
       <div>{loading && <p>Chargement en cours...</p>}</div>
 
-      <div className="">
+      <div>
         <UrlCard longUrl={longUrl} shortUrl={shortenedUrl} />
       </div>
     </>
