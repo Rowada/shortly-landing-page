@@ -1,21 +1,12 @@
 // @ts-nocheck
-import React from "react";
 
 import { useState, useEffect } from "react";
 import useCleanURI from "../../hooks/useCleanURI";
-import { UrlCard } from "./UrlCard";
 
 export const CleanForm = () => {
   const [localLongUrl, setLocalLongUrl] = useState("");
   const [urlList, setUrlList] = useState([]);
   const { shortenedUrl, longUrl, loading, error, shortenUrl } = useCleanURI();
-
-  useEffect(() => {
-    const savedUrls = JSON.parse(sessionStorage.getItem("urlList"));
-    if (savedUrls) {
-      setUrlList(savedUrls);
-    }
-  }, []);
 
   useEffect(() => {
     if (shortenedUrl) {
@@ -68,12 +59,6 @@ export const CleanForm = () => {
             Loading...
           </p>
         )}
-      </div>
-
-      <div>
-        {urlList.map((url, index) => (
-          <UrlCard key={index} longUrl={url.longUrl} shortUrl={url.shortUrl} />
-        ))}
       </div>
     </>
   );
