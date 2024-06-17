@@ -1,10 +1,7 @@
 // @ts-nocheck
 import React from "react";
 import { Section } from "../Section/Section";
-
 import banner from "../../assets/images/illustration-working.svg";
-// import { CleanForm } from "../Form/CleanForm";
-// import { UrlList } from "../Form/UrlList";
 
 export const Hero = () => {
   return (
@@ -13,7 +10,7 @@ export const Hero = () => {
         <div className="mx-auto grid gap-6 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
           <div className="mx-auto place-self-end lg:order-last lg:col-span-6">
             <img
-              className="w-96 md:w-[500px] lg:w-full"
+              className="w-96 md:w-128 lg:w-full"
               src={banner}
               alt="illustration"
             />
@@ -34,13 +31,6 @@ export const Hero = () => {
           </div>
         </div>
       </section>
-
-      {/* <div className="relative -bottom-60 md:-bottom-40">
-        <div>
-          <CleanForm />
-        </div>
-        <UrlList />
-      </div> */}
     </Section>
   );
 };

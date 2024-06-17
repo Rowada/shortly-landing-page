@@ -11,7 +11,7 @@ export const Features = () => {
   return (
     <div className="mt-20 w-full bg-features py-40">
       <Section>
-        <div className="relative -top-60 -mb-28">
+        <div className="relative -top-230 -mb-28">
           <CleanForm />
           <UrlList />
         </div>
