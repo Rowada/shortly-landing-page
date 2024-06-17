@@ -15,7 +15,7 @@ export const CleanForm = () => {
       setUrlList(updatedUrlList);
       sessionStorage.setItem("urlList", JSON.stringify(updatedUrlList));
     }
-  }, [shortenedUrl]);
+  }, [shortenedUrl, longUrl, urlList]);
 
   const handleShortenUrl = async (e) => {
     e.preventDefault();
