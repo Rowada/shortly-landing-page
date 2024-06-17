@@ -21,6 +21,14 @@ export default {
       backgroundImage: {
         banner: "url('/src/assets/images/bg-boost-desktop.svg)",
       },
+
+      spacing: {
+        128: "31.25rem",
+      },
+
+      inset: {
+        230: "230px",
+      },
     },
   },
   plugins: [],
