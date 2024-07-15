@@ -2,23 +2,27 @@
 
 import { useEffect, useState } from "react";
 import useCleanURI from "../../hooks/useCleanURI";
+import { useUrlStore } from "../../stores/useUrlStore";
 import { LoaderCircle } from "lucide-react";
 
 export const CleanForm = () => {
   const [localLongUrl, setLocalLongUrl] = useState("");
   const [inputError, setInputError] = useState("");
 
-  const [urlList, setUrlList] = useState([]);
+  // const [urlList, setUrlList] = useState([]);
   const { shortenedUrl, longUrl, loading, error, shortenUrl } = useCleanURI();
+
+  const addUrl = useUrlStore((state) => state.addUrl);
 
   useEffect(() => {
     if (shortenedUrl) {
       const newUrl = { longUrl: longUrl, shortUrl: shortenedUrl };
-      const updatedUrlList = [...urlList, newUrl];
-      setUrlList(updatedUrlList);
-      sessionStorage.setItem("urlList", JSON.stringify(updatedUrlList));
+      // const updatedUrlList = [...urlList, newUrl];
+      // setUrlList(updatedUrlList);
+      // sessionStorage.setItem("urlList", JSON.stringify(updatedUrlList));
+      addUrl(newUrl);
     }
-  }, [shortenedUrl, longUrl, urlList]);
+  }, [shortenedUrl, longUrl, addUrl]);
 
   const handleShortenUrl = async (e) => {
     e.preventDefault();
